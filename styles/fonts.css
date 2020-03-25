@@ -1,0 +1,50 @@
+@font-face {
+    font-family: amatic;
+    src: url(fonts/AmaticSC-Bold.ttf);
+}
+@font-face {
+    font-family: caveat;
+    src: url(fonts/Caveat-Bold.ttf);
+}
+@font-face {
+    font-family: comingsoon;
+    src: url(fonts/ComingSoon-Regular.ttf);
+}
+@font-face {
+    font-family: euphoria;
+    src: url(fonts/EuphoriaScript-Regular.ttf);
+}
+@font-face {
+    font-family: gaegu;
+    src: url(fonts/Gaegu-Regular.ttf);
+}
+@font-face {
+    font-family: nanum;
+    src: url(fonts/NanumPenScript-Regular.ttf);
+}
+@font-face {
+    font-family: nothing;
+    src: url(fonts/NothingYouCouldDo-Regular.ttf);
+}
+
+.amatic {
+    font-family: amatic;
+}
+.caveat {
+    font-family: caveat;
+}
+.comingsoon {
+    font-family: comingsoon;
+}
+.euphoria {
+    font-family: euphoria;
+}
+.gaegu {
+    font-family: gaegu;
+}
+.nanum {
+    font-family: nanum;
+}
+.nothing {
+    font-family: nothing;
+}

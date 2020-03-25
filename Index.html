@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>iNicy™</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="icon" href="images/icons/icon_512.png">
+    <script type="text/javascript" src="scripts/lib/vue.js"></script>
+    <script type="text/javascript" src="dist/app-build.js"></script>
+</head>
+
+<body>
+    <main id="app" v-on:click="exitFullscreen">
+        <div id="frame"></div>
+        <div id="solid" v-bind:style="'background-color: #' + options.background.color + ';'" v-show="isSolid"></div>
+        <div id="picture"
+            v-bind:style="'background-image: URL(images/backgrounds/' + options.background.picture + '.jpg); background-position: center; background-repeat: no-repeat; background-size: cover; filter: blur(' + options.background.blur.toString() + 'px);'"
+            v-show="isPicture"></div>
+        <div id="vignette"
+            v-bind:style="'background-image: URL(images/vignette/' + options.background.vignette + '.png); background-position: center; background-repeat: no-repeat; background-size: cover;'"
+            v-show="isPicture"></div>
+        <div id="phrase">
+            <table class="tall wide">
+                <tr>
+                    <td halign="center" valign="middle">
+                        <p v-if="phrase"
+                            v-bind:style="'text-align: center; font-family: ' + options.foreground.font + '; font-size: ' + options.foreground.size + 'rem; color: #' + options.foreground.color + ';' + (options.foreground.shadow ? ' text-shadow: 0px 2px 5px #2e2e2e;' : '')">
+                            <!-- {{phrase.subject}}{{phrase.additional ? ' ' + phrase.additional : ''}} {{phrase.adjective}} -->
+                            {{phrase.sentence}}
+                        </p>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+        <div id="options" v-show="isOptions">
+            <p class="title">FONT</p>
+            <div>
+                <span class="btn rectangle" v-for="(font, i) in data.fonts"
+                    v-bind:class="font.value + (isThisForegroundFont(font.value) ? ' selected' : '')"
+                    v-on:click="setForegroundFont(font.value)">{{font.key}}</span>
+            </div>
+            <div>
+                <div class="athird">
+                    <p class="title">DIMENSIONE</p>
+                    <span class="btn square" v-for="(size, i) in data.sizes"
+                        v-bind:class="isThisForegroundSize(size.value) ? 'selected' : ''"
+                        v-on:click="setForegroundSize(size.value)">{{size.key}}</span>
+                </div>
+                <div class="athird">
+                    <p class="title">OMBRA</p>
+                    <span class="btn square" v-for="(shadow, i) in data.shadows"
+                        v-bind:class="isThisForegroundShadow(shadow.value) ? 'selected' : ''"
+                        v-on:click="setForegroundShadow(shadow.value)">{{shadow.key}}</span>
+                </div>
+                <div class="athird">
+                    <p class="title">COLORE</p>
+                    <div>
+                        <span class="btn square" v-for="(foreground, index) in data.foregroundColors"
+                            v-bind:style="'background-color: #' + foreground.value + ';'"
+                            v-bind:class="isThisForegroundColor(foreground.value) ? 'selected' : ''"
+                            v-on:click="setForegroundColor(foreground.value)">&nbsp;</span>
+                    </div>
+                </div>
+            </div>
+            <p class="title">SFONDO</p>
+            <div>
+                <span class="btn rectangle" v-for="(type, i) in data.types"
+                    v-bind:class="isThisBackgroundType(type.value) ? 'selected' : ''"
+                    v-on:click="setBackgroundType(type.value)">{{type.key}}</span>
+            </div>
+            <div v-show="isSolid">
+                <span class="btn square" v-for="(background, index) in data.backgroundColors"
+                    v-bind:style="'background-color: #' + background.value + ';'"
+                    v-bind:class="isThisBackgroundColor(background.value) ? 'selected' : ''"
+                    v-on:click="setBackgroundColor(background.value)">&nbsp;</span>
+            </div>
+            <div v-show="isPicture">
+                <span class="btn rectangle" v-for="(picture, i) in data.pictures"
+                    v-bind:class="isThisBackgroundPicture(picture.value) ? 'selected' : ''"
+                    v-on:click="setBackgroundPicture(picture.value)">{{picture.key}}</span>
+            </div>
+            <p class="title" v-show="isPicture">SFOCATURA</p>
+            <div v-if="isPicture">
+                <span class="btn rectangle" v-for="(blur, i) in data.blurs"
+                    v-bind:class="isThisBackgroundBlur(blur.value) ? 'selected' : ''"
+                    v-on:click="setBackgroundBlur(blur.value)">{{blur.key}}</span>
+            </div>
+            <p class="title" v-show="isPicture">VIGNETTATURA</p>
+            <div v-if="isPicture">
+                <span class="btn rectangle" v-for="(vignette, i) in data.vignettes"
+                    v-bind:class="isThisBackgroundVignette(vignette.value) ? 'selected' : ''"
+                    v-on:click="setBackgroundVignette(vignette.value)">{{vignette.key}}</span>
+            </div>
+        </div>
+        <div id="btnGenerateNewPhrase" v-on:click="generate" v-show="!fullscreen">💬</div>
+        <div id="btnScramble" v-on:click="scramble" v-show="!fullscreen">🔀 </div>
+        <div id="btnToggleFullscreen" v-on:click="goFullscreen" v-show="!fullscreen">📷</div>
+        <div id="btnToggleOptions" v-on:click="toggleOptions" v-show="!fullscreen">⚙️</div>
+        <div id="divLogo" class="amatic">iNicy™</div>
+    </main>
+</body>
+
+<script>
+
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            mode: 'view',
+            fullscreen: false,
+            phrase: '',
+            options: {
+                foreground: {
+                    font: 'amatic',
+                    size: 4,
+                    color: 'f0efef',
+                    shadow: true
+                },
+                background: {
+                    type: 'picture',
+                    color: '272524',
+                    picture: 'sky',
+                    blur: 2,
+                    vignette: 2
+                }
+            },
+            data: {
+                fonts,
+                foregroundColors,
+                sizes,
+                shadows,
+                types,
+                backgroundColors,
+                pictures,
+                blurs,
+                vignettes
+            }
+        },
+        computed: {
+            isSolid: function () {
+                return this.options.background.type === 'solid'
+            },
+            isPicture: function () {
+                return this.options.background.type === 'picture'
+            },
+            isOptions: function () {
+                return this.mode === 'options'
+            }
+        },
+        methods: {
+            generate() {
+                this.phrase = phrasesEngine.Get()
+            },
+            scramble() {
+                this.options.foreground.font = fonts[Utils.rnd(fonts.length)].value;
+                this.options.foreground.size = sizes[Utils.rnd(sizes.length)].value;
+                this.options.foreground.shadow = shadows[Utils.rnd(shadows.length)].value;
+                this.options.foreground.color = foregroundColors[Utils.rnd(foregroundColors.length)].value;
+                this.options.background.type = Utils.chance(90) ? 'picture' : types[Utils.rnd(types.length)].value;
+                this.options.background.color = backgroundColors[Utils.rnd(backgroundColors.length)].value;
+                this.options.background.picture = pictures[Utils.rnd(pictures.length)].value;
+                this.options.background.blur = blurs[Utils.rnd(blurs.length)].value;
+                this.options.background.vignette = vignettes[Utils.rnd(vignettes.length)].value;
+            },
+            goFullscreen(event) {
+                let e = document.querySelector("#app")
+                e.requestFullscreen()
+                    .then(function () {
+                        vm.fullscreen = true
+                    })
+                    .catch(function (error) {
+                        Utils.err(error.message)
+                        vm.fullscreen = false
+                    })
+            },
+            exitFullscreen() {
+                if (this.fullscreen) {
+                    document.exitFullscreen()
+                    this.fullscreen = false
+                }
+            },
+            toggleOptions() {
+                this.mode = this.isOptions ? 'view' : 'options'
+            },
+            setForegroundFont(v) {
+                this.options.foreground.font = v
+            },
+            setForegroundColor(v) {
+                this.options.foreground.color = v
+            },
+            setForegroundSize(v) {
+                this.options.foreground.size = v
+            },
+            setForegroundShadow(v) {
+                this.options.foreground.shadow = v
+            },
+            setBackgroundType(v) {
+                this.options.background.type = v
+            },
+            setBackgroundColor(v) {
+                this.options.background.color = v
+            },
+            setBackgroundPicture(v) {
+                this.options.background.picture = v
+            },
+            setBackgroundBlur(v) {
+                this.options.background.blur = v
+            },
+            setBackgroundVignette(v) {
+                this.options.background.vignette = v
+            },
+            isThisForegroundFont: function (v) {
+                return v === this.options.foreground.font
+            },
+            isThisForegroundSize: function (v) {
+                return v === this.options.foreground.size
+            },
+            isThisForegroundColor: function (v) {
+                return v === this.options.foreground.color
+            },
+            isThisForegroundShadow: function (v) {
+                return v === this.options.foreground.shadow
+            },
+            isThisBackgroundType: function (v) {
+                return v === this.options.background.type
+            },
+            isThisBackgroundColor: function (v) {
+                return v === this.options.background.color
+            },
+            isThisBackgroundPicture: function (v) {
+                return v === this.options.background.picture
+            },
+            isThisBackgroundBlur: function (v) {
+                return v === this.options.background.blur
+            },
+            isThisBackgroundVignette: function (v) {
+                return v === this.options.background.vignette
+            }
+        },
+        mounted:
+            function () {
+                phrasesEngine.init()
+                this.generate()
+            }
+    });
+
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+.bg-light {
+    background-color: #f0efef;
+}
+.bg-dark {
+    background-color: #454140;
+}
+.bg-nightsky {
+    background-color: #034f84;
+}
+.bg-fire { 
+    background-color: #c1502e;
+}
+.bg-sun { 
+    background-color: #feb236;
+}
+.bg-forest { 
+    background-color: #588c7e;
+}
+.bg-poison { 
+    background-color: #9934bb;
+}
+
+.bg-bg-light {
+    background-color: #c0bfbf;
+}
+.bg-bg-dark {
+    background-color: #272524;
+}
+.bg-bg-nightsky {
+    background-color: #043c64;
+}
+.bg-bg-fire { 
+    background-color: #973b1f;
+}
+.bg-bg-sun { 
+    background-color: #d6962e;
+}
+.bg-bg-forest { 
+    background-color: #386357;
+}
+.bg-bg-poison { 
+    background-color: #6e2586;
+}

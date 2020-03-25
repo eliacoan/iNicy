@@ -1,0 +1,170 @@
+#frame {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #101010;
+}
+
+#picture {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    left: -20px;
+    right: -20px;
+    opacity: 0.7;
+}
+
+#vignette {
+    position: fixed;
+    top: -20px;
+    bottom: -20px;
+    left: -20px;
+    right: -20px;
+    opacity: 1;
+}
+
+#solid {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#phrase {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#options {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #888;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#btnGenerateNewPhrase {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+#btnScramble {
+    position: fixed;
+    bottom: 10px;
+    left: 54px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+#btnToggleFullscreen {
+    position: fixed;
+    bottom: 10px;
+    left: 100px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+#btnToggleOptions {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 200;
+}
+#divLogo {
+    position: fixed;
+    top: 10px;
+    left: 15px;
+    height: 40px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 40px;
+    text-align: center;
+}
+
+.title {
+    margin-top: 10px;
+    margin-left : 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.btn {
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: transparent;
+    border: 2px solid;
+    border-radius: 4px;
+    border-color: #2e2e2e;
+    border-radius: 4px;
+    text-align: center;
+    color: #2e2e2e;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 40px;
+    overflow: hidden;
+}
+.btn:hover {
+    background-color: #fff;
+}
+.btn.selected {
+    border-color: #fff;
+    color: #fff;
+}
+.btn.selected:hover {
+    color: #2e2e2e;
+}
+.btn.square {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+.btn.rectangle {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+}
+.athird {
+    width: 33% !important;
+    float: left;
+}
+.aquarter {
+    width: 25% !important;
+    float: left;
+}
+.tall {
+    height: 100% !important;
+}
+.wide {
+    width: 100% !important;
+}
