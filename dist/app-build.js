@@ -98,8 +98,9 @@ let fonts = [
     { key: 'Coming soon', value: 'comingsoon' },
     { key: 'Euphoria', value: 'euphoria' },
     // { key: 'Gaegu', value: 'gaegu'},
-    { key: 'Nanum', value: 'nanum' },
-    { key: 'Nothing', value: 'nothing' }
+    // { key: 'Nanum', value: 'nanum'},
+    { key: 'Nothing', value: 'nothing' },
+    { key: 'Sedwick', value: 'sedwick' },
 ];
 let foregroundColors = [
     { key: 'Chiaro', value: 'f0efef' },
@@ -112,12 +113,25 @@ let foregroundColors = [
 ];
 let phrases = [];
 phrases.push(new Phrase(0, 'Madre Teresa di Calcutta', 'Non c\'è momento migliore di questo per essere felice.'));
+phrases.push(new Phrase(0, 'Fëdor Dostoevskij', 'La bellezza salverà il mondo.'));
+phrases.push(new Phrase(0, 'Khalil Gibran', 'La bellezza non è nel viso. La bellezza è nella luce del cuore.'));
+phrases.push(new Phrase(0, 'Paolo di Tarso', 'L\'amicizia sorregge tutto, crede a tutto, spera tutto, sopporta tutto.'));
+phrases.push(new Phrase(0, 'Santy Giuliano', 'La distanza avvicina ciò che la vicinanza ignora.'));
+phrases.push(new Phrase(0, 'Agostino Degas', 'Le persone sono come fiumi, più sono profonde meno rumore fanno.'));
 phrases.push(new Phrase(0, 'Bob Marley', 'Si sbaglia perché non si è perfetti.'));
 phrases.push(new Phrase(0, 'Freddie Mercury', 'Si può essere tutto ciò che si vuole.'));
 phrases.push(new Phrase(0, 'Pablo Neruda', 'Ho sentito una carezza sul viso arrivare fino al cuore.'));
 phrases.push(new Phrase(0, 'Renzo Piano', 'Viaggiando si può capire che le differenze sono un valore e non un problema.'));
 phrases.push(new Phrase(0, 'Charlie Chaplin', 'Canta, balla, ridi e vivi intensamente ogni giorno della tua vita.'));
 phrases.push(new Phrase(0, 'Jim Morrison', 'La vita è come uno specchio: ti sorride se la guardi sorridendo.'));
+phrases.push(new Phrase(0, 'Jorge Luis Borges', 'L\'unica cosa senza mistero è la felicità, perché si giustifica da sè.'));
+phrases.push(new Phrase(0, 'Ippolito Nievo', 'La felicità è nella coscienza; tenetevelo a mente.'));
+phrases.push(new Phrase(0, 'Luciano De Crescenzo', 'Nella vita per ogni sorriso che ti risparmi c\'è almeno un sorriso che ti perdi.'));
+phrases.push(new Phrase(0, 'Michael Jackson', 'Se la vita ti da 100 motivi per piangere trovane 101 per sorridere.'));
+phrases.push(new Phrase(0, 'Carlo Dossi', 'Il sorriso è alla bellezza, quello che il sale è alle vivande.'));
+phrases.push(new Phrase(0, 'Robert Baden Powell', 'Un sorriso fa fare il doppio della strada di un brontolio.'));
+phrases.push(new Phrase(0, 'Roger Judrin', 'Il nostro sorriso è più giovane di noi.'));
+phrases.push(new Phrase(0, 'Martin Luther King', 'L\'amore è l\'unica forza capace di trasformare un nemico in amico.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Nella vita non contano i passi che fai, né le scarpe che usi, ma le impronte che lasci.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Qualunque sia la prigione che ti costruisci non dimenticare di fare anche le chiavi.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Il segreto della felicità è la libertà.'));
@@ -126,6 +140,9 @@ phrases.push(new Phrase(0, 'Anonimo', 'Fai del bene a te stesso facendo del bene
 phrases.push(new Phrase(0, 'Anonimo', 'Guarda avanti perchè è lì che stai andando.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Che il sorriso sia sempre nella tua vita.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Dopo il temporale esce sempre il sole: sii paziente.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Affrontare le difficoltà come fossero già passate è il modo migliore per superarle.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Il volto è l\'immagine dell\'anima, e gli occhi ne sono rivelatori.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Fa agli altri quello che vorresti fosse fatto a te.'));
 let pictures = [
     { key: 'Acqua', value: 'water' },
     { key: 'Alberi', value: 'trees' },
@@ -166,9 +183,9 @@ let types = [
     { key: 'Immagine', value: 'picture' }
 ];
 let vignettes = [
-    { key: 'Assente', value: '0' },
-    { key: 'Leggera', value: '1' },
-    { key: 'Pesante', value: '2' }
+    { key: 'Assente', value: 0 },
+    { key: 'Leggera', value: 1 },
+    { key: 'Pesante', value: 2 }
 ];
 class phrasesEngine {
     static Init() {

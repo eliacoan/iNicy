@@ -14,17 +14,21 @@
     font-family: euphoria;
     src: url(fonts/EuphoriaScript-Regular.ttf);
 }
-@font-face {
+/* @font-face {
     font-family: gaegu;
     src: url(fonts/Gaegu-Regular.ttf);
-}
-@font-face {
+} */
+/* @font-face {
     font-family: nanum;
     src: url(fonts/NanumPenScript-Regular.ttf);
-}
+} */
 @font-face {
     font-family: nothing;
     src: url(fonts/NothingYouCouldDo-Regular.ttf);
+}
+@font-face {
+    font-family: sedwick;
+    src: url(fonts/SedgwickAve-Regular.ttf);
 }
 
 .amatic {
@@ -39,12 +43,15 @@
 .euphoria {
     font-family: euphoria;
 }
-.gaegu {
+/* .gaegu {
     font-family: gaegu;
-}
-.nanum {
+} */
+/* .nanum {
     font-family: nanum;
-}
+} */
 .nothing {
     font-family: nothing;
+}
+.sedwick {
+    font-family: sedwick;
 }

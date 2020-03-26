@@ -4,6 +4,7 @@ let fonts = [
     { key: 'Coming soon', value: 'comingsoon'},
     { key: 'Euphoria', value: 'euphoria'},
     // { key: 'Gaegu', value: 'gaegu'},
-    { key: 'Nanum', value: 'nanum'},
-    { key: 'Nothing', value: 'nothing'}
+    // { key: 'Nanum', value: 'nanum'},
+    { key: 'Nothing', value: 'nothing'},
+    { key: 'Sedwick', value: 'sedwick'},
 ]
