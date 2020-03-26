@@ -65,4 +65,9 @@ class Utils {
           return false
         }
       }
+
+      static lpad(t: number, w:number = 3) : string {
+        let zeroes = new Array(w + 1).join("0");
+        return (zeroes + t).slice(-w);
+      }
 }

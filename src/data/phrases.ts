@@ -10,3 +10,8 @@ phrases.push(new Phrase(0, 'Jim Morrison', 'La vita è come uno specchio: ti sor
 phrases.push(new Phrase(0, 'Anonimo', 'Nella vita non contano i passi che fai, né le scarpe che usi, ma le impronte che lasci.'))
 phrases.push(new Phrase(0, 'Anonimo', 'Qualunque sia la prigione che ti costruisci non dimenticare di fare anche le chiavi.'))
 phrases.push(new Phrase(0, 'Anonimo', 'Il segreto della felicità è la libertà.'))
+phrases.push(new Phrase(0, 'Anonimo', 'Dai sempre il massimo.'))
+phrases.push(new Phrase(0, 'Anonimo', 'Fai del bene a te stesso facendo del bene agli altri.'))
+phrases.push(new Phrase(0, 'Anonimo', 'Guarda avanti perchè è lì che stai andando.'))
+phrases.push(new Phrase(0, 'Anonimo', 'Che il sorriso sia sempre nella tua vita.'))
+phrases.push(new Phrase(0, 'Anonimo', 'Dopo il temporale esce sempre il sole: sii paziente.'))

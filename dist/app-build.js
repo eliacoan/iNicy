@@ -72,6 +72,10 @@ class Utils {
             return false;
         }
     }
+    static lpad(t, w = 3) {
+        let zeroes = new Array(w + 1).join("0");
+        return (zeroes + t).slice(-w);
+    }
 }
 let backgroundColors = [
     { key: 'Chiaro', value: 'c0bfbf' },
@@ -117,22 +121,36 @@ phrases.push(new Phrase(0, 'Jim Morrison', 'La vita è come uno specchio: ti sor
 phrases.push(new Phrase(0, 'Anonimo', 'Nella vita non contano i passi che fai, né le scarpe che usi, ma le impronte che lasci.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Qualunque sia la prigione che ti costruisci non dimenticare di fare anche le chiavi.'));
 phrases.push(new Phrase(0, 'Anonimo', 'Il segreto della felicità è la libertà.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Dai sempre il massimo.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Fai del bene a te stesso facendo del bene agli altri.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Guarda avanti perchè è lì che stai andando.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Che il sorriso sia sempre nella tua vita.'));
+phrases.push(new Phrase(0, 'Anonimo', 'Dopo il temporale esce sempre il sole: sii paziente.'));
 let pictures = [
-    { key: 'ACQUA', value: 'water' },
-    { key: 'ALBERI', value: 'trees' },
-    { key: 'BAIA', value: 'bay' },
-    { key: 'CAMPI', value: 'fields' },
-    { key: 'CANYON', value: 'canyon' },
-    // { key: 'CASCATA', value: 'fall' },
-    { key: 'CIELO', value: 'sky' },
+    { key: 'Acqua', value: 'water' },
+    { key: 'Alberi', value: 'trees' },
+    { key: 'Baia', value: 'bay' },
+    { key: 'Campi', value: 'fields' },
+    { key: 'Canyon', value: 'canyon' },
+    { key: 'Cascata', value: 'fall' },
+    { key: 'Cielo', value: 'sky' },
     //{ key: 'COLLINE', value: 'hills' },
-    { key: 'DESERTO', value: 'desert' },
-    { key: 'FOGLIE', value: 'leaves' },
-    { key: 'FIORI', value: 'flowers' },
-    { key: 'INVERNO', value: 'winter' },
-    { key: 'LAGO', value: 'lake' },
-    { key: 'MONTAGNA', value: 'atop' },
-    { key: 'SPAZIO', value: 'space' }
+    { key: 'Accogliente', value: 'cozy' },
+    { key: 'Deserto', value: 'desert' },
+    { key: 'Falò', value: 'bonfire' },
+    { key: 'Fiori', value: 'flowers' },
+    { key: 'Foglie', value: 'leaves' },
+    { key: 'Foresta', value: 'wood' },
+    { key: 'Inverno', value: 'winter' },
+    { key: 'Lago', value: 'lake' },
+    { key: 'Montagna', value: 'atop' },
+    { key: 'Nuvole', value: 'clouds' },
+    { key: 'Oceano', value: 'ocean' },
+    { key: 'Primavera', value: 'spring' },
+    { key: 'Ruscello', value: 'brook' },
+    // { key: 'Spazio', value: 'space' },
+    { key: 'Tramonto', value: 'twilight' },
+    { key: 'Tropicale', value: 'tropical' }
 ];
 let shadows = [
     { key: 'Si', value: true },
@@ -153,7 +171,7 @@ let vignettes = [
     { key: 'Pesante', value: '2' }
 ];
 class phrasesEngine {
-    static init() {
+    static Init() {
         let i = 0;
         phrases.forEach(phrase => {
             phrase.id = ++i;

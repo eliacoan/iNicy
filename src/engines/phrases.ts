@@ -1,5 +1,5 @@
 class phrasesEngine {
-    static init() {
+    static Init() {
         let i = 0
         phrases.forEach(phrase => {
             phrase.id = ++i
